@@ -1,0 +1,88 @@
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    def __init__(self, nome):
+        self.nome = nome
+
+    @abstractmethod
+    def falar(self):
+        pass
+
+    @abstractmethod
+    def mover(self):
+        pass
+
+
+class Cachorro(Animal):
+    def falar(self):
+        return f"{self.nome} diz: Au Au!"
+    
+    def mover(self):
+        return f"{self.nome} está correndo."
+
+class Gato(Animal):
+    def falar(self):
+        return f"{self.nome} diz: Miau!"
+    
+    def mover(self):
+        return f"{self.nome} está andando silenciosamente."
+
+class Vaca(Animal):
+    def falar(self):
+        return f"{self.nome} diz: Muuu!"
+    
+    def mover(self):
+        return f"{self.nome} está caminhando pelo pasto."
+
+
+class Voador:
+    def voar(self):
+        return f"{self.nome} está voando!"
+
+class Nadador:
+    def nadar(self):
+        return f"{self.nome} está nadando!"
+
+class Pato(Animal, Voador, Nadador):
+    def falar(self):
+        return f"{self.nome} diz: Quack Quack!"
+    
+    def mover(self):
+        return f"{self.nome} está andando."
+
+
+def fazer_som(animal):
+    print(animal.falar())
+
+def fazer_movimento(animal):
+    print(animal.mover())
+    # Verificação opcional para demonstrar as habilidades extras de Voador/Nadador
+    if isinstance(animal, Voador):
+        print(animal.voar())
+    if isinstance(animal, Nadador):
+        print(animal.nadar())
+
+
+class Jacare(Animal, Nadador):
+    def falar(self):
+        return f"{self.nome} faz um som grave: Grrr..."
+    
+    def mover(self):
+        return f"{self.nome} está rastejando (andando) na margem do rio."
+
+
+
+if __name__ == "__main__":
+    animais = [
+        Cachorro("Rex"),
+        Gato("Mingau"),
+        Vaca("Mimosa"),
+        Pato("Donald"),
+        Jacare("Godzilla")
+    ]
+
+    for animal in animais:
+        print(f"--- Testando {type(animal).__name__}: {animal.nome} ---")
+        fazer_som(animal)
+        fazer_movimento(animal)
+        print()
