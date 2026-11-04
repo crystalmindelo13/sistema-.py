@@ -4,11 +4,11 @@ class Animal(ABC):
     def __init__(self, nome):
         self.nome = nome
 
-    @abstractmethod
+    
     def falar(self):
         pass
 
-    @abstractmethod
+    
     def mover(self):
         pass
 
