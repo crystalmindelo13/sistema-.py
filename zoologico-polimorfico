@@ -56,7 +56,7 @@ def fazer_som(animal):
 
 def fazer_movimento(animal):
     print(animal.mover())
-    # Verificação opcional para demonstrar as habilidades extras de Voador/Nadador
+    
     if isinstance(animal, Voador):
         print(animal.voar())
     if isinstance(animal, Nadador):
